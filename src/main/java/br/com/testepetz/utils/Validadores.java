@@ -9,6 +9,6 @@ public class Validadores {
 	}
 
 	public static Object validarNulo(Object objeto) {
-		return Optional.ofNullable(objeto).isEmpty() ? null : objeto;
+		return !Optional.ofNullable(objeto).isPresent() ? null : objeto;
 	}
 }
