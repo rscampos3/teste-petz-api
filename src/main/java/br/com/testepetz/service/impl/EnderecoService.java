@@ -39,7 +39,7 @@ public class EnderecoService implements IEnderecoService {
 			cep = cep.replace("-", "");
 			log.debug("Buscando endereço na base");
 			Optional<Endereco> enderecoOptional = this.enderecoRepository.findByCep(cep);
-			if (enderecoOptional.isEmpty()) {
+			if (!enderecoOptional.isPresent()) {
 				log.debug("Buscando o endereço na api");
 				Optional<EnderecoResponse> enderecoResponse = this.buscaEnderecoClient.buscarEnderecoPorCep(cep);
 				if (enderecoResponse.isPresent()) {
